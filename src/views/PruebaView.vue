@@ -42,8 +42,23 @@ export default {
   //Nota: Se puede observar en algunas ocasiones que se usa como si fuera la propiedad "data"
   // Mas info=> https://es.vuejs.org/v2/guide/computed.html
   computed: {
+    //Esto devuelve un state de un modulo en 'store.js'
     nameProduct() {
-      return this.$store.getters.product.name
+
+      /*
+
+
+
+      ESTO NO FUNCIONA
+      PREGUNTAR POR SI HAY ALGUNA MANERA DE ACCEDER A LOS MODULOS SIN LOS GETTERS
+
+
+
+
+       */
+      this.$store.dispatch("changeCardPrice")
+      return this.$store.getters.product.price
+
     }
   }
 }

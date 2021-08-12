@@ -33,7 +33,7 @@ const moduleA = {
         }
     },
     actions: {
-        changeCardPriece(){
+        changeCardPrice(){
             this.commit('CHANGE_GRAPHIC_CARD_PRICE')
         },
         changeShopLocation(){
