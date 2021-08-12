@@ -3,6 +3,9 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
+//Modules
+//Para usar modulos externos hay que importarlos
+import * as event from './modules/event'
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
@@ -11,7 +14,7 @@ del 'store' de 'Vuex' estén divididas y sean mas legibles, en vez de declarar e
 las declaramos dentro de módulos (los modulos pueden declararse en ficheros aparte) y posteriormente dentro de nuestra entidad
 'Vuex.Store' registramos los módulos (véase más abajo)
  */
-const moduleA = {
+ const moduleA = {
     state: () => ({
         product:{
             id:1,
@@ -89,6 +92,7 @@ export default new Vuex.Store({
     //Aqui van los 'modules' para hacer que nuestra 'store' sea escalable y mejor mantenida en cuanto el proyecto aumenta
     //Mas info => https://vuex.vuejs.org/guide/modules.html
     modules: {
-        firstModule: moduleA
+        firstModule: moduleA,
+        secondModule: event
     }
 })

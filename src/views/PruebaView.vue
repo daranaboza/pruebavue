@@ -10,7 +10,6 @@
     <input @click="count" type="button" :value="'Has clickado '+ numeroVeces +' veces'">
     <input @click="changeNameUserMutation" type="button" :value="'Cambia nombre en el state'">
     <input @click="changeNameFunctionAction" type="button" :value="'Cambia nombre en el state con un Action'">
-
   </div>
 </template>
 
@@ -19,7 +18,7 @@ export default {
   name: "PruebaView",
   data() {
     return {
-      numeroVeces: 0
+      numeroVeces: 0,
     }
   },
   //Aqí se declaran los métodos o funciones
@@ -44,21 +43,7 @@ export default {
   computed: {
     //Esto devuelve un state de un modulo en 'store.js'
     nameProduct() {
-
-      /*
-
-
-
-      ESTO NO FUNCIONA
-      PREGUNTAR POR SI HAY ALGUNA MANERA DE ACCEDER A LOS MODULOS SIN LOS GETTERS
-
-
-
-
-       */
-      this.$store.dispatch("changeCardPrice")
-      return this.$store.getters.product.price
-
+      return this.$store.state.firstModule.product.name
     }
   }
 }
