@@ -18,11 +18,15 @@
     <BaseInput label="Subtitulo"  v-model="subtitle"></BaseInput>
     <p>{{title}}</p>
     <p>{{subtitle}}</p>
+    <img :src="chuckIcon">
+    <p>{{chuckJoke}}</p>
   </div>
 </template>
 
 <script>
 import BaseInput from "@/components/BaseInput";
+// import axios from "axios";
+
 export default {
   name: "PruebaView",
   components: {BaseInput},
@@ -30,9 +34,36 @@ export default {
     return {
       numeroVeces: 0,
       title:'',
-      subtitle:''
+      subtitle:'',
+      chuckJoke:'',
+      chuckIcon:''
 
     }
+  },
+  mounted() {
+
+this.$axiosPropio.get('https://api.chucknorris.io/jokes/random').then((response)=>{
+   console.log(response)
+
+   this.chuckJoke= response.data.value;
+   this.chuckIcon= response.data.icon_url;
+ }).catch((error)=>{
+   console.log('No se ha cogido la API: '+ error)
+ })
+
+    //Ejemplo API con AJAX
+
+   /* const ajax = new XMLHttpRequest();
+
+    ajax.onload= ()=> {
+      console.log(JSON.parse(ajax.responseText).value)
+    }
+
+
+    ajax.open('GET','https://api.chucknorris.io/jokes/random',true);
+    ajax.send()*/
+
+
   },
   //Aqí se declaran los métodos o funciones
   methods: {

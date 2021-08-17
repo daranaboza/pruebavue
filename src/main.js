@@ -4,6 +4,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import NavBar from "@/components/NavBar";
+import axios  from "axios";
 
 /*
 Aquí se registran los componentes de manera global para toda nuestra app, dado que es donde se declara la instancia de "Vue"
@@ -22,9 +23,14 @@ Segundo argumento es el componente a exportar de manera global
 Vue.component('NavBar',NavBar)
 
 Vue.config.productionTip = false
+Vue.use(axios)
+//Así podemos agregar propiedades personalizadas a nuestra instancia de Vue y llamarlas usando: this.$propiedad en nuestros componentes
+Vue.prototype.$axiosPropio=axios
+
 
 new Vue({
   router,
   store,
+  axios,
   render: h => h(App)
 }).$mount('#app')
